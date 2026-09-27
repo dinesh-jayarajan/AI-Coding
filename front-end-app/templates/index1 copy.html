@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pattern - Job Search Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .hashtag {
+            font-size: 18px;
+            color: #764ba2;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        /* Search Section */
+        .search-section {
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-button {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .search-button:active {
+            transform: translateY(0);
+        }
+
+        .search-button.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Info Section */
+        .info-text {
+            color: #667eea;
+            font-size: 14px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .results-section.show {
+            display: block;
+        }
+
+        .results-header {
+            margin-bottom: 20px;
+        }
+
+        .results-header h2 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        .result-count {
+            color: #764ba2;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Table Styles */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #667eea;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #555;
+        }
+
+        tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f8f9ff;
+            transform: scale(1.01);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Message Section */
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .message.error {
+            background-color: #fee;
+            color: #c33;
+            border-left: 4px solid #c33;
+        }
+
+        .message.success {
+            background-color: #efe;
+            color: #3c3;
+            border-left: 4px solid #3c3;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-button {
+                width: 100%;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Email Button Styling */
+        .email-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .email-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+        }
+
+        .email-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <div class="logo">📊 DATA PATTERN</div>
+                <div class="tagline">Professional Resource Management</div>
+                <div class="hashtag">#DataPattern</div>
+            </div>
+        </header>
+
+        <div class="content">
+            <h1>🔍 Job Description Search</h1>
+            <p class="subtitle">Search our professional database by job description</p>
+
+            <div class="search-section">
+                <div class="search-box">
+                    <input 
+                        type="text" 
+                        id="jobInput" 
+                        placeholder="Enter job description (e.g., 'Python Developer', 'Full Stack', 'Senior')"
+                        autocomplete="off"
+                    >
+                    <button class="search-button" id="searchBtn" onclick="performSearch()">
+                        Search
+                    </button>
+                </div>
+                <div class="info-text">💡 Tip: Search by job title, senior level, or specific technology</div>
+            </div>
+
+            <div id="messageContainer"></div>
+
+            <div id="resultsSection" class="results-section">
+                <div class="results-header">
+                    <h2>📋 Search Results</h2>
+                    <div class="result-count" id="resultCount"></div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>Location</th>
+                                <th>Visa Type</th>
+                                <th>Candidate Rate</th>
+                                <th>Submitted Rate</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-text">
+                <p>© 2029 Data Pattern Company. All Rights Reserved. | Professional Resource Solutions</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const jobInput = document.getElementById('jobInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const messageContainer = document.getElementById('messageContainer');
+        const resultsSection = document.getElementById('resultsSection');
+        const tableBody = document.getElementById('tableBody');
+        const resultCount = document.getElementById('resultCount');
+
+        // Allow searching by pressing Enter key
+        jobInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        async function performSearch() {
+            const jobDescription = jobInput.value.trim();
+
+            // Clear previous messages
+            messageContainer.innerHTML = '';
+            resultsSection.classList.remove('show');
+
+            if (!jobDescription) {
+                showMessage('Please enter a job description to search', 'error');
+                return;
+            }
+
+            // Show loading state
+            searchBtn.disabled = true;
+            searchBtn.innerHTML = '<span class="spinner"></span>Searching...';
+
+            try {
+                const response = await fetch('/api/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ search_term: jobDescription })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    displayResults(data.data);
+                    showMessage(`Found ${data.data.length} matching record(s)`, 'success');
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Error: Unable to perform search. ' + error.message, 'error');
+                console.error('Error:', error);
+            } finally {
+                // Reset button state
+                searchBtn.disabled = false;
+                searchBtn.innerHTML = 'Search';
+            }
+        }
+
+                function displayResults(results) {
+            tableBody.innerHTML = '';
+
+            results.forEach((record) => {
+                const row = document.createElement('tr');
+                const subject = `Inquiry about ${record['Job Title']} position`;
+                const body = `Dear ${record.Name},\n\nI am interested in discussing the ${record['Job Title']} position with you.\n\nBest regards`;
+                const mailtoLink = `mailto:${record.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                row.innerHTML = `
+                    <td>${record['Job Title'] || 'N/A'}</td>
+                    <td><strong>${record.Name || 'N/A'}</strong></td>
+                    <td>${record.Mobile || 'N/A'}</td>
+                    <td>${record.email || 'N/A'}</td>
+                    <td>${record.Location || 'N/A'}</td>
+                    <td>${record['Visa Type '] || 'N/A'}</td>
+                    <td>${record['Candidate rate'] || 'N/A'}</td>
+                    <td>${record['Submitted Rate'] || 'N/A'}</td>
+                    <td><a href="${mailtoLink}" class="email-btn">📧 Email</a></td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            resultCount.textContent = `Total Records: ${results.length}`;
+            resultsSection.classList.add('show');
+        }
+
+        function showMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = message;
+            messageContainer.appendChild(messageDiv);
+
+            // Auto-remove error messages after 5 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    messageDiv.remove();
+                }, 5000);
+            }
+        }
+
+        // Focus on input when page loads
+        window.addEventListener('load', function() {
+            jobInput.focus();
+        });
+    </script>
+</body>
+</html>
