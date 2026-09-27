@@ -1,4 +1,4 @@
-I need to create a front end page which needs to ask input for job description based on the job description, it needs to look up the master.csv (which contains the name,emailid, job description, phone_number and bill rate) and result needs to be published on the same front end page with tabular format. front end page should have compnay logo - Data Pattern Company and with fancy look (creative of Data Pattern hash Tag)
+I need to create a front end page which needs to ask input for job description based on the job description, it needs to look up the master.csv (which contains the name,emailid, job description, phone_number and bill rate) and result needs to be published on the same front end page with tabular format. front end page should have company logo - Sample Company and with fancy look (creative of Example Company hash tag)
 
 Note - master.csv - create some dummy 10 records to do this activities (which contains the name,emailid, job description, phone number and bill rate)
 

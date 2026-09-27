@@ -1,11 +1,11 @@
 name,emailid,job_description,phone_number,bill_rate
-John Smith,john.smith@datapattern.com,Python Developer,+1-555-0101,85
-Sarah Johnson,sarah.johnson@datapattern.com,Java Developer,+1-555-0102,90
-Michael Brown,michael.brown@datapattern.com,Full Stack Developer,+1-555-0103,95
-Emily Davis,emily.davis@datapattern.com,Senior Python Developer,+1-555-0104,120
-David Wilson,david.wilson@datapattern.com,Frontend Developer,+1-555-0105,75
-Jessica Martinez,jessica.martinez@datapattern.com,Data Analyst,+1-555-0106,80
-Robert Taylor,robert.taylor@datapattern.com,DevOps Engineer,+1-555-0107,110
-Lisa Anderson,lisa.anderson@datapattern.com,Python Developer,+1-555-0108,88
-James Thomas,james.thomas@datapattern.com,Full Stack Developer,+1-555-0109,92
-Jennifer White,jennifer.white@datapattern.com,Senior Java Developer,+1-555-0110,125
+John Smith,john.smith@example.com,Python Developer,+1-555-0101,85
+Sarah Johnson,sarah.johnson@example.com,Java Developer,+1-555-0102,90
+Michael Brown,michael.brown@example.com,Full Stack Developer,+1-555-0103,95
+Emily Davis,emily.davis@example.com,Senior Python Developer,+1-555-0104,120
+David Wilson,david.wilson@example.com,Frontend Developer,+1-555-0105,75
+Jessica Martinez,jessica.martinez@example.com,Data Analyst,+1-555-0106,80
+Robert Taylor,robert.taylor@example.com,DevOps Engineer,+1-555-0107,110
+Lisa Anderson,lisa.anderson@example.com,Python Developer,+1-555-0108,88
+James Thomas,james.thomas@example.com,Full Stack Developer,+1-555-0109,92
+Jennifer White,jennifer.white@example.com,Senior Java Developer,+1-555-0110,125

@@ -1,4 +1,4 @@
-# Data Pattern - Job Search Portal
+# Sample Company - Job Search Portal
 
 A beautiful, modern web application for searching professionals by job description using Flask and HTML/CSS.
 
@@ -8,7 +8,7 @@ A beautiful, modern web application for searching professionals by job descripti
 - **Quick Search**: Search by job title or keywords (e.g., "Python Developer", "Senior", "Full Stack")
 - **Professional UI**: Modern gradient design with company branding
 - **Real-time Results**: Displays matching records in a clean table format
-- **Company Branding**: Data Pattern logo and #DataPattern hashtag integration
+- **Company Branding**: Sample company logo and #ExampleCompany hashtag integration
 
 ## 📁 Project Structure
 
@@ -42,7 +42,7 @@ FRONT-END-APP/
 
 3. **Access the Application**
    - Open your browser and navigate to: `http://localhost:5000`
-   - The page will load with the Data Pattern logo and search interface
+   - The page will load with the sample company logo and search interface
 
 ## 💡 How to Use
 
@@ -111,7 +111,7 @@ The CSV file contains 10 sample records with the following fields:
   "data": [
     {
       "name": "John Smith",
-      "emailid": "john.smith@datapattern.com",
+      "emailid": "john.smith@example.com",
       "job_description": "Python Developer",
       "phone_number": "+1-555-0101",
       "bill_rate": "85"
@@ -177,4 +177,4 @@ For issues or suggestions, please check the Flask documentation at https://flask
 
 ---
 
-**© 2029 Data Pattern Company | #DataPattern**
+**© 2029 Sample Company | #ExampleCompany**

@@ -15,7 +15,7 @@ from io import BytesIO
 
 ## share point file url are not working, so I have downloaded the file and using it locally for now. I will fix the share point access issue later and update the code accordingly.
 
-# sharepoint_url = "https://datapatternz.sharepoint.com/:x:/g/IQB_jBGn2IBrRYTVrWwdSrY0AXg9qMVdkkLZ8uqpdu0JAlU?e=3bg0lh"
+# sharepoint_url = "https://company.sharepoint.com/sites/YourSite/Shared%20Documents/Tracker%20Canada%20-2026.xlsx"
 
 # from office365.sharepoint.client_context import ClientContext
 # from office365.runtime.auth.user_credential import UserCredential
@@ -42,11 +42,11 @@ EXCEL_FILE = '/Users/dineshjayarajan/Desktop/Dinesh Jayarajan/Dinesh Jayarajan/L
 SHEET_NAMES = ['Capgemini', 'Tech M', 'TCS','Persistent']
 
 # Email configuration for Outlook
-EMAIL_SENDER = os.getenv("EMAIL_SENDER", "deejay@datapattern.ai")
+EMAIL_SENDER = os.getenv("EMAIL_SENDER", "noreply@example.com")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-RECIPIENT_EMAIL = 'ca-recruitment@datapattern.ai'  # Primary recipient email (can be the same as sender for BCC)
-CC_EMAILS = 'deejay@datapattern.ai;dan@datapattern.ai;kathir@datapattern.ai;suryabharathi@datapattern.ai;ssmoses@datapattern.ai'  # CC recipients (semicolon separated)
-BCC_EMAILS = 'ca-recruitment@datapattern.ai;ganesanv@datapattern.ai;gladson.moses@datapattern.ai'  # BCC recipients (semicolon separated)
+RECIPIENT_EMAIL = 'recruitment@example.com'  # Primary recipient email (can be the same as sender for BCC)
+CC_EMAILS = 'team@example.com;hr@example.com;managers@example.com'  # CC recipients (semicolon separated)
+BCC_EMAILS = 'admin@example.com;ops@example.com'  # BCC recipients (semicolon separated)
 #BCC_EMAILS=''
 
 # def get_today_submissions():
@@ -157,7 +157,7 @@ def create_email_body(results, date_label=None):
     html_body += """
                 </tbody>
             </table>
-            <p style="margin-top: 30px;">Best regards,<br>Data Pattern Analytics</p>
+            <p style="margin-top: 30px;">Best regards,<br>Sample Company Analytics</p>
         </body>
     </html>
     """
